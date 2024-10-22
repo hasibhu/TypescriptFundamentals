@@ -37,14 +37,40 @@
 
 
 
+// sum of several inputs
 
-// const sum = (message: string, ...numbers: number[]): string => {
-//     let total = numbers.reduce((previous, current) => {
-//         return previous + current;
-//     }, 0)
+const sum = (message: string, ...numbers: number[]): string => {
+    let total = numbers.reduce((previous, current) => {
+        return previous + current;
+    }, 0)
 
-//     return(`${message} ${total}`)
-// }
+    return(`${message} ${total}`)
+}
 
 
-// console.log(sum('Here is the total of your imput input range: ', 1,2,3,4,5,6,7));
+console.log(sum('Here is the total of your imput : ', 1,2,3,4,5,6,7));
+
+
+
+
+// function for making sum of the of input range 
+
+const sumOfRange = (message: string, startNum: number, endNum: number): string => {
+    
+    const numbers: number[] = [];
+    
+    for (let i = startNum; i <= endNum; i++) {
+        numbers.push(i)
+    };
+
+    let total = numbers.reduce((previous, current) => {
+        return previous + current;
+    }, 0);
+
+    return (`${message} : ${total}`)
+};
+
+
+const functionCall: string = sumOfRange('Total of your input range; ', 1, 10)
+
+console.log(functionCall);
