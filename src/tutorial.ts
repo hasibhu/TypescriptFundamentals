@@ -48,7 +48,7 @@ const sum = (message: string, ...numbers: number[]): string => {
 }
 
 
-console.log(sum('Here is the total of your imput : ', 1,2,3,4,5,6,7));
+// console.log(sum('Here is the total of your imput : ', 1,2,3,4,5,6,7));
 
 
 
@@ -73,4 +73,22 @@ const sumOfRange = (message: string, startNum: number, endNum: number): string =
 
 const functionCall: string = sumOfRange('Total of your input range; ', 1, 10)
 
-console.log(functionCall);
+// console.log(functionCall);
+
+
+
+// if type of the input is number return double of it and if type of the input is string return upper case of the input 
+
+const processInput = (input: number | string): number|string => {
+    
+    if (typeof input === "number") {
+        return input * 2;
+    } else {
+       return input.toUpperCase();
+    }
+
+
+}
+
+
+// console.log(processInput('Hello'));
