@@ -300,8 +300,6 @@ const deepWork: BookInfo = {
 // - Now that we have our interface, we can create an object that adheres to this interface. This objebt should have all the properties defined in the interface (except for optional ones, which are... optional), and the methods should be implemented.
 // - Finally, we can use our object. We can call its upgradeRam method to increase its RAM. 
 
-
-
 interface Computer{
     readonly id: number,
     brand: string,
@@ -321,6 +319,156 @@ const computer = {
     }
 }
 
-const newRam = computer.upgradeRam(96)
-computer.ram = newRam;
-console.log(computer);
+// const newRam = computer.upgradeRam(96)
+// computer.ram = newRam;
+// console.log(computer);
+
+
+// interface - advanced 
+
+interface Person{
+    name: string,
+    getDetails(): string
+}
+
+
+interface DogOwner{
+    dogName: string,
+    dogDetails(): string
+}
+
+
+interface Person{
+    age: number
+}
+const person: Person = {
+    name: 'john',
+    age: 32,
+    getDetails() {
+        return `Person: Name : ${this.name}, age: ${this.age}`
+    }
+}
+
+interface Employees extends Person{
+    id: number
+}
+
+
+const employees: Employees = {
+    name: 'john',
+    age: 32,
+    id: 12,
+    getDetails() {
+        return `Employee: Name : ${this.name}, age: ${this.age} and job id: ${this.id}`
+    }
+}
+
+// console.log(person.getDetails());
+// console.log(employees.getDetails());
+
+
+// extend interface 
+interface ManagerInterface extends Person, DogOwner{
+    managePeople(): void;
+};
+
+
+const man : ManagerInterface= {
+    name: 'bob',
+    age: 43,
+    dogName: 'rex',
+    getDetails() {
+        return `Name : ${this.name}, age: ${this.age}`
+    },
+    dogDetails() {
+        return `Dog name: ${this.dogName}`
+    },
+    managePeople(){
+        console.log('Managing people')
+        
+    }
+}
+
+// console.log(man.getDetails(),'\n ',
+// man.dogDetails());
+// man.managePeople()
+
+
+// 531 - watch last half again 
+
+
+
+
+// enum 
+
+enum ServerResponseStatus {
+    Success = 200,
+    Error = 500
+}
+
+
+Object.values(ServerResponseStatus).forEach((value) => {
+    if (typeof value === 'number') {
+        
+        // console.log(value);
+    }
+})
+
+
+// console.log(ServerResponseStatus);
+
+interface ServerResponse {
+    result: ServerResponseStatus,
+    data: string[]
+}
+
+
+const getServerResponse = (): ServerResponse  => {
+    return {
+        result: ServerResponseStatus.Success,
+        data: ['Hasib', 'Joya', 'Soumik']
+    }
+}
+
+
+
+// console.log(getServerResponse()); 
+
+
+
+
+// ## Challenge
+
+// - Define an enum named UserRole with members Admin, Manager, and Employee.
+// - Define a type alias named User with properties id (number), name (string), role (UserRole), and contact (a tuple with two elements: email as string and phone as string).
+// - Define a function named createUser that takes a User object as its parameter and returns a User object.
+// - Call the createUser function with an object that matches the User type, store the result in a variable, and log the variable to the console.
+
+enum UserRole {
+  Admin,
+  Manager,
+  Employee,
+}
+
+type EnumUser = {
+    id: number,
+    name: string,
+    role: UserRole,
+    contact: [string, string]
+}
+
+
+const enumCreateUser = (user: EnumUser):EnumUser => {
+    return user 
+}
+
+
+const user: EnumUser = enumCreateUser({
+    id: 1,
+    name: 'hasib',
+    role: UserRole.Admin,
+    contact:['hasib@hasib.com', '3232233']
+});
+
+
+console.log(user);
