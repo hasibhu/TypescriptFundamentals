@@ -258,3 +258,69 @@ const discountedBook: DiscountedBook = {
 }
 
 
+
+
+// interface  : only for object
+
+
+interface BookInfo {
+    readonly isbn: number;
+    title: string;
+    author: string;
+    genre?: string;
+    printAuthor(): void;
+    printTitle(message: string): string
+}
+
+const deepWork: BookInfo = {
+    isbn: 123,  // This should be valid
+    title: 'deep work',
+    author: 'cal newport',
+    genre: 'self-help',
+    printAuthor() {
+        console.log(this.author);
+    },
+    printTitle(message) {
+        return `${this.title} ${message}`
+    }
+};
+
+
+// deepWork.printAuthor()
+// const titlePrint = deepWork.printTitle('Is a good book.');
+// console.log(titlePrint);
+
+
+// Challenge 
+// - Start by defining an interface Computer using the interface keyword. This will serve as a blueprint for objects that will be of this type.
+// - Inside the interface, define the properties that the object should have. In this case, we have id, brand, ram, and storage.
+// - Use the readonly keyword before the id property to indicate that it cannot be changed once it's set.
+// - Use the ? after the storage property to indicate that this property is optional and may not exist on all objects of this type.
+// - Also inside the interface, define any methods that the object should have. In this case, we have upgradeRam, which is a function that takes a number and returns a number.
+// - Now that we have our interface, we can create an object that adheres to this interface. This objebt should have all the properties defined in the interface (except for optional ones, which are... optional), and the methods should be implemented.
+// - Finally, we can use our object. We can call its upgradeRam method to increase its RAM. 
+
+
+
+interface Computer{
+    readonly id: number,
+    brand: string,
+    ram: number,
+    storage?: number,
+    upgradeRam (increase: number): number 
+}
+
+
+const computer = {
+    id: 123,
+    brand: 'Apple',
+    ram: 32,
+    storage: 256,
+    upgradeRam(amount:number) {
+        return this.ram + amount;
+    }
+}
+
+const newRam = computer.upgradeRam(96)
+computer.ram = newRam;
+console.log(computer);
