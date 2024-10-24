@@ -472,3 +472,6 @@ const user: EnumUser = enumCreateUser({
 
 
 console.log(user);
+
+
+
